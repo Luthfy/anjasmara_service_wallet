@@ -13,7 +13,7 @@ class CreateWalletTable extends Migration
      */
     public function up()
     {
-        Schema::create('wallet', function (Blueprint $table) {
+        Schema::create('wallets', function (Blueprint $table) {
             $table->id();
             $table->char('uuid', 36)->unique();
             $table->bigInteger('balance_wallet')->default(0)->nullable(true);

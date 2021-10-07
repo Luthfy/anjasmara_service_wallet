@@ -13,7 +13,7 @@ class CreatePromoTable extends Migration
      */
     public function up()
     {
-        Schema::create('promo', function (Blueprint $table) {
+        Schema::create('promos', function (Blueprint $table) {
             $table->id();
             $table->char('uuid', 36)->unique(true);
             $table->string('title_promo');
