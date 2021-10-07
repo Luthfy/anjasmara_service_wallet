@@ -9,5 +9,15 @@ class Wallet extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['uuid', 'balance_wallet', 'poin_wallet', 'pin', 'user_uuid'];
+    protected $fillable = [
+        'uuid',
+        'balance_wallet',
+        'poin_wallet',
+        'pin',
+        'user_uuid'
+    ];
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime'
+    ];
 }
