@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBankTable extends Migration
+class CreateLogTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateBankTable extends Migration
      */
     public function up()
     {
-        Schema::create('banks', function (Blueprint $table) {
+        Schema::create('logs', function (Blueprint $table) {
             $table->id();
-            $table->uuid('uuid', 36)->unique();
-            $table->string('name_bank');
-            $table->string('code_bank');
-            $table->string('number_bank');
-            $table->string('method_bank');
-            $table->softDeletes();
+            $table->uuid('uuid')->unique();
+            $table->string('scope');
+            $table->string('data');
+            $table->uuid('user_id')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ class CreateBankTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bank');
+        Schema::dropIfExists('log');
     }
 }

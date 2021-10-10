@@ -5,13 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
-
-use App\Models\Bank;
-use Ramsey\Uuid\Uuid;
-
-class BankController extends Controller
+class LogController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,17 +14,7 @@ class BankController extends Controller
      */
     public function index()
     {
-        // return response()->json([
-        //     'status' => true,
-        //     'message' => 'success',
-        //     'data' => []
-        // ]);
-        // $banks = Bank::all()->get();
-        $data =  Bank::all();
-        return view('bank', ['banks'=>$data]);
-        // return view('banks', [
-        //     "name_bank" => "Bank::all()"
-        // ]);
+        //
     }
 
     /**
@@ -41,16 +25,7 @@ class BankController extends Controller
      */
     public function store(Request $request)
     {
-        $uuid = Str::uuid();
-        // dd($uuid);
-        // dd($request->nameBank);
-        DB::table('banks')->insert([
-            'uuid' => $uuid->toString(),
-            'name_bank' => $request->nameBank,
-            'code_bank' => $request->codeBank,
-            'number_bank' => $request->numberBank,
-            'method_bank' => $request->methodBank
-        ]);
+        //
     }
 
     /**

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\BankController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('list');
 });
+
+Route::get('/promo', function() {
+    return view(('promo'));
+});
+
+// Routes for bank
+Route::get('/bank', function() {
+    return view(('bank'));
+});
+Route::post('bank', [BankController::class, 'store']);
+Route::get('bank', [BankController::class, 'index']);
+// Route::delete('bank', [BankController::class, 'destroy']);

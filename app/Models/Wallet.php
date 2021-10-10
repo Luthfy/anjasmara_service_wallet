@@ -16,8 +16,18 @@ class Wallet extends Model
         'pin',
         'user_uuid'
     ];
+
+    protected $guarded = [
+        'id'
+    ];
+
     protected $casts = [
         'created_at' => 'datetime',
         'updated_at' => 'datetime'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

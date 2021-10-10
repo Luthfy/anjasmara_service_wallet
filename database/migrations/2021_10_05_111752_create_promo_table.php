@@ -15,7 +15,7 @@ class CreatePromoTable extends Migration
     {
         Schema::create('promos', function (Blueprint $table) {
             $table->id();
-            $table->char('uuid', 36)->unique(true);
+            $table->uuid('uuid', 36)->unique(true);
             $table->string('title_promo');
             $table->string('description_promo')->nullable(true);
             $table->string('image_promo')->nullable(true);

@@ -15,11 +15,11 @@ class CreateWalletTable extends Migration
     {
         Schema::create('wallets', function (Blueprint $table) {
             $table->id();
-            $table->char('uuid', 36)->unique();
+            $table->uuid('uuid', 36)->unique();
             $table->bigInteger('balance_wallet')->default(0)->nullable(true);
             $table->bigInteger('poin_wallet')->default(0)->nullable(true);
             $table->string('pin');
-            $table->char('user_uuid', 36)->references('uuid')->on('users')->nullable(true);
+            $table->uuid('user_uuid', 36)->nullable(true);
             $table->timestamps();
         });
     }
