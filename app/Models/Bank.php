@@ -9,5 +9,15 @@ class Bank extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['uuid', 'name_bank', 'code_bank', 'number_bank', 'method_bank'];
+    protected $fillable = [
+        'uuid',
+        'name_bank',
+        'code_bank',
+        'number_bank',
+        'method_bank'
+    ];
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime'
+    ];
 }

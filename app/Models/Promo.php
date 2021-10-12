@@ -9,5 +9,17 @@ class Promo extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['uuid', 'title_promo', 'description_promo', 'image_promo', 'code_promo', 'discount_promo', 'type_discount_promo'];
+    protected $fillable = [
+        'uuid',
+        'title_promo',
+        'description_promo',
+        'image_promo',
+        'code_promo',
+        'discount_promo',
+        'type_discount_promo'
+    ];
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime'
+    ];
 }
