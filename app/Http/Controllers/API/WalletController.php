@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
+use App\Models\Wallet;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class WalletController extends Controller
 {
@@ -21,15 +23,41 @@ class WalletController extends Controller
         ]);
     }
 
+    public function walletGet(Wallet $wallet)
+    {
+        return view('wallets.index', [
+            'title' => 'Wallet',
+            'wallet' => $wallet
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function walletCreate(Wallet $wallet)
     {
-        //
+        $success = $wallet->create([
+            'uuid' => Str::uuid(),
+            'pin' => bcrypt(request('pin')),
+            'user_uuid' => request('user_uuid'),
+        ]);
+
+        if($success) {
+            return response()->json([
+                'status' => true,
+                'message' => 'success',
+                'data' => $success
+            ]);
+        }else{
+            return response()->json([
+                'status' => false,
+                'message' => 'data not found',
+                'data' => $success
+            ]);
+        }
     }
 
     /**
