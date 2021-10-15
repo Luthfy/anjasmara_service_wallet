@@ -2,11 +2,22 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
+use App\Models\Bank;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class BankController extends Controller
 {
+
+    private $client;
+
+    public function __construct(HttpClientInterface $client)
+    {
+        $this->client = $client;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,10 +25,9 @@ class BankController extends Controller
      */
     public function index()
     {
-        return response()->json([
-            'status' => true,
-            'message' => 'success',
-            'data' => []
+        return view('banks.index', [
+            'title' => 'Banks',
+            'banks' => Bank::all()
         ]);
     }
 
@@ -27,9 +37,29 @@ class BankController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function bankCreate(Bank $bank)
     {
-        //
+        $success = $bank->create([
+            'uuid' => Str::uuid(),
+            'name_bank' => request('name_bank'),
+            'code_bank' => request('code_bank'),
+            'number_bank' => request('number_bank'),
+            'method_bank' => request('method_bank'),
+        ]);
+
+        if($success) {
+            return response()->json([
+                'status' => true,
+                'message' => 'success',
+                'data' => $success
+            ]);
+        }else{
+            return response()->json([
+                'status' => false,
+                'message' => 'data not found',
+                'data' => $success
+            ]);
+        }
     }
 
     /**
@@ -38,9 +68,17 @@ class BankController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function bankGet()
     {
-        //
+        // return $bank->all();
+        $response = $this->client->request(
+            'GET',
+            'https://api.github.com/repos/symfony/symfony-docs'
+        );
+
+        $content = $response->getContent();
+
+        return $content;
     }
 
     /**
@@ -50,9 +88,16 @@ class BankController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function bankIsDeleted(Bank $bank)
     {
-        //
+        $success = $bank->trashed();
+        if($success) {
+            return response()->json([
+                'status' => true,
+                'message' => 'data has been deleted',
+                'data' => $success
+            ]); 
+        }
     }
 
     /**
