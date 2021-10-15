@@ -23,12 +23,29 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/test', function () {
-    return view('layouts.main');
+    return view('layouts.main', [
+        'title' => 'Main'
+    ]);
 });
 
-Route::get('/bank', [BankController::class, 'index']);
+// Wallet view
 Route::get('/wallet', [WalletController::class, 'index']);
-Route::get('/wallet/{wallet:id}', [WalletController::class, 'walletGet']);
-Route::get('/promotion', [PromotionController::class, 'index']);
 
+// Get a wallet by id
+Route::get('/wallet/{wallet:id}', [WalletController::class, 'walletGet']);
+
+// Create a wallet
 Route::post('/wallet/create', [WalletController::class, 'walletCreate']);
+
+
+// Bank
+Route::get('/banks', [BankController::class, 'index']);
+Route::get('/banks/api', [BankController::class, 'bankGet']);
+Route::post('/banks/create', [BankController::class, 'bankCreate']);
+Route::put('/banks/{bank:id}', [BankController::class, 'bankIsDeleted']);
+
+// Promo
+Route::get('/promos', [PromotionController::class, 'index']);
+Route::get('/promos/api', [PromotionController::class, 'promoGet']);
+Route::post('/promos/create', [PromotionController::class, 'promoCreate']);
+Route::put('/promos/{promo:id}', [PromotionController::class, 'promoIsDeleted']);
