@@ -20,6 +20,9 @@
             <li>
                 <a href="/promo">Promotion Feature</a>
             </li>
+            <li>
+                <a href="{{ route('login') }}">Login</a>
+            </li>
         </ul>
     </div>
 
