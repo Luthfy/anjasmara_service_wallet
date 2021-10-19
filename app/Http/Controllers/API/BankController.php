@@ -2,20 +2,58 @@
 
 namespace App\Http\Controllers\API;
 
+use Cekmutasi;
 use App\Models\Bank;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+// use Symfony\Contracts\HttpClient\HttpClientInterface;
 use App\Http\Controllers\Controller;
-use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Tridi\Cekmutasi\Cekmutasi as CekmutasiCekmutasi;
+
+// use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class BankController extends Controller
 {
 
-    private $client;
+    // private $client;
 
-    public function __construct(HttpClientInterface $client)
+    // public function __construct(HttpClientInterface $client)
+    // {
+    //     $this->client = $client;
+    // }
+
+    public function GetCekmutasi()
     {
-        $this->client = $client;
+        // 
+    }
+
+    public function bankGet(Bank $bank)
+    {
+        // return $bank->all();
+        // $mutation = Cekmutasi::bank()->mutation([
+        //         'date'		=> [
+        //             'from'	=> date('Y-m-d') . ' 00:00:00',
+        //             'to'	=> date('Y-m-d') . ' 23:59:59'
+        //         ]
+        //     ]);
+        $id = 1;
+        // $mutation = Cekmutasi::catchIPN(request());
+        // $mutation = Cekmutasi::checkIP();
+        $mutation = Cekmutasi::bank()->detail($id);
+
+        // $mutation = Cekmutasi::bank()->mutation();
+
+        return $mutation;
+        // dd($mutation);
+
+        // $response = $this->client->request(
+        //     'GET',
+        //     'https://api.github.com/repos/symfony/symfony-docs'
+        // );
+
+        // $content = $response->getContent();
+
+        // return $content;
     }
 
     /**
@@ -68,18 +106,7 @@ class BankController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function bankGet()
-    {
-        // return $bank->all();
-        $response = $this->client->request(
-            'GET',
-            'https://api.github.com/repos/symfony/symfony-docs'
-        );
-
-        $content = $response->getContent();
-
-        return $content;
-    }
+    
 
     /**
      * Update the specified resource in storage.
