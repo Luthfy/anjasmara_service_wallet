@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\BankController;
-use App\Http\Controllers\API\LoginController;
+use App\Http\Controllers\API\WalletController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,24 +16,17 @@ use App\Http\Controllers\API\LoginController;
 */
 
 Route::get('/', function () {
-    return view('list');
-})->name('list');
-
-Route::get('/promo', function() {
-    return view(('promo'));
+    return view('welcome');
 });
 
-// Routes for bank
-Route::get('/bank', function() {
-    return view(('bank'));
-});
-Route::post('bank', [BankController::class, 'store']);
-Route::get('bank', [BankController::class, 'index']);
-// Route::delete('bank', [BankController::class, 'destroy']);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-// Login Routes
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/login', [LoginController::class, 'store']);
+require __DIR__.'/auth.php';
 
-// // Lougout Route
-// Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
+// Bank
+Route::get('/banks', [BankController::class, 'webview'])->name('bank');
+
+// Wallet Route
+Route::get('/wallet', [WalletController::class, 'webview'])->name('wallet');

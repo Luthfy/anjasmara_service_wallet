@@ -20,7 +20,7 @@ class BankController extends Controller
      */
     public function index()
     {
-        // return response()->json([
+        // return response()->json ([
         //     'status' => true,
         //     'message' => 'success',
         //     'data' => []
@@ -31,6 +31,14 @@ class BankController extends Controller
         // return view('banks', [
         //     "name_bank" => "Bank::all()"
         // ]);
+    }
+
+    public function webview() {
+        $data = Bank::all();
+        return view('banks.webview', [
+            'banks' => $data,
+            'header' => 'Bank'
+        ]);
     }
 
     /**
