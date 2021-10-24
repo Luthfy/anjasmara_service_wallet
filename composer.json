@@ -11,8 +11,10 @@
         "laravel/framework": "^8.54",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "nesbot/carbon": "^2.53",
         "symfony/http-client": "^5.3",
-        "trijayadigital/cekmutasi-laravel": "dev-master"
+        "trijayadigital/cekmutasi-laravel": "dev-master",
+        "xendit/xendit-php": "^2.15"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
