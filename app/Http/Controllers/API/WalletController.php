@@ -6,9 +6,56 @@ use App\Models\Wallet;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Xendit\Xendit;
 
 class WalletController extends Controller
 {
+
+    private $token = 'xnd_development_k0WQwFBU21Jc7ojuxOvlcb8cIebo3kZzmig4FxqkbjYj3yEgEJAHGvZxcWW6u4o';
+
+    public function getListVa()
+    {
+        Xendit::setApiKey($this->token);
+        $getVABanks = \Xendit\VirtualAccounts::getVABanks();
+
+        return response()->json([
+            'data' => $getVABanks
+        ]);
+    }
+    
+    public function createVa(Request $request)
+    {
+        Xendit::setApiKey($this->token);
+        $params = ["external_id" => \uniqid(),
+                "bank_code" => $request->bank,
+                "name" => $request->name,
+                "expected_amount" => $request->price,
+                "is_closed" => true,
+            ];
+    
+        $createVA = \Xendit\VirtualAccounts::create($params);
+
+        // $params = [
+        //     'reference_id' => uniqid(),
+        //     'currency' => 'IDR',
+        //     'amount' => 1000,
+        //     'checkout_method' => 'ONE_TIME_PAYMENT',
+        //     'channel_code' => 'ID_SHOPEEPAY',
+        //     'channel_properties' => [
+        //         'success_redirect_url' => 'https://dashboard.xendit.co/register/1',
+        //     ],
+        //     'metadata' => [
+        //         'branch_code' => 'tree_branch'
+        //     ]
+        // ];
+        
+        // $createEWalletCharge = \Xendit\EWallets::createEWalletCharge($params);
+
+        return response()->json([
+            'data' => $createVA
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      *
