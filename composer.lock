@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c0756c226719145a86f5a8d10785174c",
+    "content-hash": "548682f35b0213e520dd3d0ecd026ab7",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5238,6 +5238,66 @@
             "time": "2020-07-13T06:12:54+00:00"
         },
         {
+            "name": "trijayadigital/cekmutasi-laravel",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/trijayadigital/cekmutasi-laravel.git",
+                "reference": "69bed00f32fc9535716fb5941bf1b88a972f1c8f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/trijayadigital/cekmutasi-laravel/zipball/69bed00f32fc9535716fb5941bf1b88a972f1c8f",
+                "reference": "69bed00f32fc9535716fb5941bf1b88a972f1c8f",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": ">=5.0",
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Tridi\\Cekmutasi\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "Cekmutasi": "Tridi\\Cekmutasi\\Facade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Tridi\\Cekmutasi\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PT Trijaya Digital Grup",
+                    "email": "cs@p-store.net"
+                },
+                {
+                    "name": "Zeros Technology",
+                    "email": "admin@zeros.co.id"
+                }
+            ],
+            "description": "Development & Integration Toolkit for Cekmutasi.co.id",
+            "homepage": "https://cekmutasi.co.id",
+            "support": {
+                "issues": "https://github.com/trijayadigital/cekmutasi-laravel/issues",
+                "source": "https://github.com/trijayadigital/cekmutasi-laravel"
+            },
+            "time": "2020-01-28T11:26:25+00:00"
+        },
+        {
             "name": "vlucas/phpdotenv",
             "version": "v5.3.1",
             "source": {
@@ -8008,7 +8068,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "trijayadigital/cekmutasi-laravel": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

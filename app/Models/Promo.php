@@ -19,9 +19,7 @@ class Promo extends Model
         'type_discount_promo'
     ];
 
-    protected $guarded = [
-        'id'
-    ];
+    // protected $guarded = ['id'];
 
     protected $casts = [
         'created_at' => 'datetime',

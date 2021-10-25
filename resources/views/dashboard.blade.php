@@ -17,7 +17,7 @@
                             <a href="{{ route('bank') }}">Bank</a>
                         </li>
                         <li>
-                            <a href="{{-- route('promo') --}}">Promo</a>
+                            <a href="{{ route('promo') }}">Promo</a>
                         </li>
                         <li>
                             <a href="{{-- route('') --}}"></a>
