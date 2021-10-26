@@ -6,6 +6,7 @@ use App\Models\Wallet;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Xendit\Xendit;
 
 class WalletController extends Controller
@@ -63,10 +64,20 @@ class WalletController extends Controller
      */
     public function index()
     {
-        return response()->json([
-            'status' => true,
-            'message' => 'success',
-            'data' => []
+        // return response()->json([
+        //     'status' => true,
+        //     'message' => 'success',
+        //     'data' => []
+        // ]);
+        $userWallet = Auth::id();
+        $wallet = Wallet::where('user_uuid', '$userWallet');
+    }
+
+    public function webview() {
+        $data = Wallet::all();
+        return view('wallets.webview', [
+            'wallet' => $data,
+            'header' => 'Wallet'
         ]);
     }
 

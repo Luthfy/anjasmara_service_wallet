@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Http\Request;
+use Database\Factories\WalletFactory;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\BankController;
-use App\Http\Controllers\API\PromotionController;
 use App\Http\Controllers\API\WalletController;
-use Database\Factories\WalletFactory;
+use App\Http\Controllers\API\PromotionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,7 +40,6 @@ Route::get('/wallet/{wallet:id}', [WalletController::class, 'walletGet']);
 // Create a wallet
 Route::post('/wallet/create', [WalletController::class, 'walletCreate']);
 
-
 // Bank
 Route::get('/banks', [BankController::class, 'index']);
 Route::get('/banks/api', [BankController::class, 'bankGet']);
@@ -52,3 +51,4 @@ Route::get('/promos', [PromotionController::class, 'index']);
 Route::get('/promos/api', [PromotionController::class, 'promoGet']);
 Route::post('/promos/create', [PromotionController::class, 'promoCreate']);
 Route::put('/promos/{promo:id}', [PromotionController::class, 'promoIsDeleted']);
+

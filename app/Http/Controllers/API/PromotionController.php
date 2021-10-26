@@ -23,6 +23,15 @@ class PromotionController extends Controller
         ]);
     }
 
+    public function webview()
+    {
+        $data = promo::all();
+        return view('promo.webview', [
+            'header' => 'Promo',
+            'promos' => $data
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -38,7 +47,7 @@ class PromotionController extends Controller
             'image_promo' => request('image_promo'),
             'code_promo' => request('code_promo'),
             'discount_promo' => request('discount_promo'),
-            'type_discount_promo' => request('type_discount_promo') 
+            'type_discount_promo' => request('type_discount_promo')
         ]);
 
         if($success) {
