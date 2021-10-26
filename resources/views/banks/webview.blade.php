@@ -16,7 +16,6 @@
                         <h5 class="card-title">Code: {{ $bank->code_bank }}</h5>
                         <h5 class="card-title">Number: {{ $bank->number_bank }}</h5>
                         <h5 class="card-title">Method: {{ $bank->method_bank }}</h5>
-                        <a href="{{ route('dashboard') }}" class="btn btn-primary">Back to Dashboard</a>
                     </div>
                 </div>
             </div>

@@ -28,6 +28,9 @@ Route::get('/test', function () {
     ]);
 });
 
+Route::get('xendit/va/list',  [WalletController::class, 'getListVa']);
+Route::post('xendit/va/create',  [WalletController::class, 'createVa']);
+
 // Wallet view
 Route::get('/wallet', [WalletController::class, 'index']);
 
