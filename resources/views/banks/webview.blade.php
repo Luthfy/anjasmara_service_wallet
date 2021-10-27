@@ -16,6 +16,8 @@
                         <h5 class="card-title">Code: {{ $bank->code_bank }}</h5>
                         <h5 class="card-title">Number: {{ $bank->number_bank }}</h5>
                         <h5 class="card-title">Method: {{ $bank->method_bank }}</h5>
+                        <h5 class="card-title">Updated at: {{ $bank->updated_at }}</h5>
+                        <h5 class="card-title">Created at: {{ $bank->created_at }}</h5>
                     </div>
                 </div>
             </div>
