@@ -16,6 +16,8 @@
                         <h5 class="card-title">Points: {{ $walle->poin_wallet }}</h5>
                         <h5 class="card-title">Pin: {{ $walle->pin }}</h5>
                         <h5 class="card-title">User UUID: {{ $walle->user_uuid }}</h5>
+                        <h5 class="card-title">Updated at: {{ $walle->updated_at }}</h5>
+                        <h5 class="card-title">Created at: {{ $walle->created_at }}</h5>
                     </div>
                 </div>
             </div>

@@ -23,7 +23,7 @@ class WalletController extends Controller
             'data' => $getVABanks
         ]);
     }
-    
+
     public function createVa(Request $request)
     {
         Xendit::setApiKey($this->token);
@@ -33,7 +33,7 @@ class WalletController extends Controller
                 "expected_amount" => $request->price,
                 "is_closed" => true,
             ];
-    
+
         $createVA = \Xendit\VirtualAccounts::create($params);
 
         // $params = [
@@ -49,7 +49,7 @@ class WalletController extends Controller
         //         'branch_code' => 'tree_branch'
         //     ]
         // ];
-        
+
         // $createEWalletCharge = \Xendit\EWallets::createEWalletCharge($params);
 
         return response()->json([

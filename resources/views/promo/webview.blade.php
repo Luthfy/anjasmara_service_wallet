@@ -18,6 +18,8 @@
                         <h5 class="card-title">Code: {{ $promo->code_promo }}</h5>
                         <h5 class="card-title">Discount: {{ $promo->discount_promo }}</h5>
                         <h5 class="card-title">Discount Type: {{ $promo->type_discount_promo }}</h5>
+                        <h5 class="card-title">Updated at: {{ $promo->updated_at }}</h5>
+                        <h5 class="card-title">Created at: {{ $promo->created_at }}</h5>
                     </div>
                 </div>
             </div>

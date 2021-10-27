@@ -20,7 +20,7 @@
                             <a href="{{ route('promo') }}">Promo</a>
                         </li>
                         <li>
-                            <a href="{{-- route('') --}}"></a>
+                            <a href="{{ route('log') }}">Log</a>
                         </li>
                     </ul>
                 </div>
