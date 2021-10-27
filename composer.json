@@ -11,13 +11,8 @@
         "laravel/framework": "^8.54",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-<<<<<<< HEAD
-        "nesbot/carbon": "^2.53",
-        "ramsey/uuid": "^4.2",
-=======
         "ramsey/uuid": "^4.2",
         "nesbot/carbon": "^2.53",
->>>>>>> 0f0544fa275325c63ccf1db0b18e93bc90b95920
         "symfony/http-client": "^5.3",
         "trijayadigital/cekmutasi-laravel": "dev-master",
         "xendit/xendit-php": "^2.15"

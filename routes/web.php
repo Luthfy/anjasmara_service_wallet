@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\LogController;
 use App\Http\Controllers\API\BankController;
 use App\Http\Controllers\API\WalletController;
 use App\Http\Controllers\API\PromotionController;
@@ -34,3 +35,6 @@ Route::get('/wallet', [WalletController::class, 'webview'])->name('wallet');
 
 // Promo
 Route::get('/promotion', [PromotionController::class, 'webview'])->name('promo');
+
+// Log
+Route::get('/log', [LogController::class, 'webview'])->name('log');
