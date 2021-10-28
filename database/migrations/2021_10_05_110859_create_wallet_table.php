@@ -20,7 +20,8 @@ class CreateWalletTable extends Migration
             $table->bigInteger('poin_wallet')->default(0)->nullable(true);
             $table->string('pin');
             $table->uuid('user_uuid', 36);
-            $table->foreign('user_uuid', 36)->references('uuid')->on('users');
+            $table->foreign('user_uuid')->references('uuid')->on('users');
+            // $table->foreignId('user_uuid', 36)->unique()->nullable();
             $table->timestamps();
         });
     }

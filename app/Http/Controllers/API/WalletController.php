@@ -6,6 +6,7 @@ use App\Models\Wallet;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Xendit\Xendit;
 
 class WalletController extends Controller
@@ -22,7 +23,7 @@ class WalletController extends Controller
             'data' => $getVABanks
         ]);
     }
-    
+
     public function createVa(Request $request)
     {
         Xendit::setApiKey($this->token);
@@ -32,7 +33,7 @@ class WalletController extends Controller
                 "expected_amount" => $request->price,
                 "is_closed" => true,
             ];
-    
+
         $createVA = \Xendit\VirtualAccounts::create($params);
 
         // $params = [
@@ -48,7 +49,7 @@ class WalletController extends Controller
         //         'branch_code' => 'tree_branch'
         //     ]
         // ];
-        
+
         // $createEWalletCharge = \Xendit\EWallets::createEWalletCharge($params);
 
         return response()->json([
@@ -65,6 +66,20 @@ class WalletController extends Controller
     {
         return response()->json([
             'data' => Wallet::all()
+        // return response()->json([
+        //     'status' => true,
+        //     'message' => 'success',
+        //     'data' => []
+        // ]);
+        $userWallet = Auth::id();
+        $wallet = Wallet::where('user_uuid', '$userWallet');
+    }
+
+    public function webview() {
+        $data = Wallet::all();
+        return view('wallets.webview', [
+            'wallet' => $data,
+            'header' => 'Wallet'
         ]);
     }
 

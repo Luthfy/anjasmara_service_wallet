@@ -12,6 +12,12 @@ use Tridi\Cekmutasi\Cekmutasi as CekmutasiCekmutasi;
 
 // use Symfony\Contracts\HttpClient\HttpClientInterface;
 
+use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Str;
+
+// use App\Models\Bank;
+use Ramsey\Uuid\Uuid;
+
 class BankController extends Controller
 {
 
@@ -24,7 +30,7 @@ class BankController extends Controller
 
     public function GetCekmutasi()
     {
-        // 
+        //
     }
 
     public function bankGet(Bank $bank)
@@ -63,9 +69,24 @@ class BankController extends Controller
      */
     public function index()
     {
-        return view('banks.index', [
-            'title' => 'Banks',
-            'banks' => Bank::all()
+        return response()->json ([
+            'status' => true,
+            'message' => 'success',
+            'data' => []
+        ]);
+        // $banks = Bank::all()->get();
+        $data =  Bank::all();
+        return view('bank', ['banks'=>$data]);
+        // return view('banks', [
+        //     "name_bank" => "Bank::all()"
+        // ]);
+    }
+
+    public function webview() {
+        $data = Bank::all();
+        return view('banks.webview', [
+            'banks' => $data,
+            'header' => 'Bank'
         ]);
     }
 
@@ -106,7 +127,7 @@ class BankController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
+
 
     /**
      * Update the specified resource in storage.
@@ -123,7 +144,7 @@ class BankController extends Controller
                 'status' => true,
                 'message' => 'data has been deleted',
                 'data' => $success
-            ]); 
+            ]);
         }
     }
 
