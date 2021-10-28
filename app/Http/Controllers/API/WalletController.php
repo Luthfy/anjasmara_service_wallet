@@ -64,9 +64,7 @@ class WalletController extends Controller
     public function index()
     {
         return response()->json([
-            'status' => true,
-            'message' => 'success',
-            'data' => []
+            'data' => Wallet::all()
         ]);
     }
 
