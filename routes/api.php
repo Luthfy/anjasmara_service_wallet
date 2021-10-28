@@ -5,6 +5,7 @@ use Database\Factories\WalletFactory;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\BankController;
 use App\Http\Controllers\API\WalletController;
+use App\Http\Controllers\API\XenditController;
 use App\Http\Controllers\API\PromotionController;
 
 /*
@@ -28,8 +29,14 @@ Route::get('/test', function () {
     ]);
 });
 
-Route::get('xendit/va/list',  [WalletController::class, 'getListVa']);
-Route::post('xendit/va/create',  [WalletController::class, 'createVa']);
+Route::get('xendit/va/list',  [XenditController::class, 'index']);
+Route::get('xendit/va/getBalance',  [XenditController::class, 'getBalance']);
+Route::post('xendit/va/createCustomer',  [XenditController::class, 'createCustomer']);
+Route::post('xendit/va/createVa',  [XenditController::class, 'createVa']);
+Route::post('xendit/va/callback',  [XenditController::class, 'callback']);
+Route::post('xendit/va/makePayout',  [XenditController::class, 'makePayout']);
+Route::get('xendit/va/makePayout',  [XenditController::class, 'doPayout']);
+Route::put('xendit/va/TopUpVA',  [XenditController::class, 'TopUpVA']);
 
 // Wallet view
 Route::get('/wallet', [WalletController::class, 'index']);
