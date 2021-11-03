@@ -34,9 +34,12 @@ Route::get('xendit/va/getBalance',  [XenditController::class, 'getBalance']);
 Route::post('xendit/va/createCustomer',  [XenditController::class, 'createCustomer']);
 Route::post('xendit/va/createVa',  [XenditController::class, 'createVa']);
 Route::post('xendit/va/callback',  [XenditController::class, 'callback']);
-Route::post('xendit/va/makePayout',  [XenditController::class, 'makePayout']);
 Route::get('xendit/va/makePayout',  [XenditController::class, 'doPayout']);
+Route::post('xendit/va/makePayout',  [XenditController::class, 'makePayout']);
+Route::get('xendit/va/getPayout',  [XenditController::class, 'getPayout']);
 Route::put('xendit/va/TopUpVA',  [XenditController::class, 'TopUpVA']);
+Route::get('xendit/va/makeInvoice',  [XenditController::class, 'doInvoice']);
+Route::post('xendit/va/makeInvoice',  [XenditController::class, 'makeInvoice']);
 
 // Wallet view
 Route::get('/wallet', [WalletController::class, 'index']);

@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@dd($wallet)
+{{-- @dd($datas) --}}
 @section('container')
     <div class="row justify-content-center">
         <div class="col-md-6 mb-3">

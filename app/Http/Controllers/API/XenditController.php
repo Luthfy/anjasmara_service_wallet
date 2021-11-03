@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\Wallet;
 use Illuminate\Http\Request;
 use Xendit\Xendit;
 use Carbon\Carbon;
@@ -115,17 +117,26 @@ class XenditController extends Controller
         
     }
 
-    public function doPayout()
+    public function doPayout(Wallet $wallet)
     {
         return view('main.index', [
-            'title' => 'main'
+            'title' => 'main',
+            // 'user_wallet' => Wallet::where('user_uuid', '6ef25aff-9c41-3fdf-b7c1-1c878702cf5d')->first(),
+            'wallet' => Wallet::where('id', 1)->get(),
         ]);
     }
     
     public function makePayout(Request $request)
     {
         Xendit::setApiKey($this->token);
+
+        $wallet = Wallet::where('user_uuid', '6ef25aff-9c41-3fdf-b7c1-1c878702cf5d')->first();
+
+        if($request->amount > $wallet['balance_wallet']){
+            return 'Saldo tidak cukup';
+        }
         
+        $result = $wallet['balance_wallet'] - $request->amount;
         $params = [
             "external_id" => $request->exid,
             "amount" => $request->amount,
@@ -133,6 +144,12 @@ class XenditController extends Controller
         ];
 
         $createPayout = \Xendit\Payouts::create($params);
+
+        // return view('main.getpayout', [
+        //     'title' => 'main',
+        //     'data' => $createPayout
+        // ]);
+
         return $createPayout;
     }
     
@@ -142,7 +159,28 @@ class XenditController extends Controller
         
         $id = 'b115b784-076b-4e43-8a7c-2da36ebbc222';
         $getPayout = \Xendit\Payouts::retrieve($id);
-
+        
         return $getPayout;
+    }
+    
+    public function doInvoice()
+    {
+        return view('main.makeinvoice', [
+            'title' => 'Make Invoice'
+        ]);
+    }
+
+    public function makeInvoice()
+    {
+        Xendit::setApiKey($this->token);
+        
+        $params = [ 
+            'external_id' => uniqid(),
+            'amount' => 50000,
+            'email' => 'akm@gmail.com'
+        ];
+    
+        $createInvoice = \Xendit\Invoice::create($params);
+        return $createInvoice;
     }
 }
