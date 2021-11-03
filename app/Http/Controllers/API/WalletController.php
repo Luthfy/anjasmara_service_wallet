@@ -66,11 +66,7 @@ class WalletController extends Controller
     {
         return response()->json([
             'data' => Wallet::all()
-        // return response()->json([
-        //     'status' => true,
-        //     'message' => 'success',
-        //     'data' => []
-        // ]);
+        ]);
         $userWallet = Auth::id();
         $wallet = Wallet::where('user_uuid', '$userWallet');
     }
